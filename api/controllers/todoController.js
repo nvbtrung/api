@@ -1,7 +1,6 @@
 'use strict';
 const https = require('https');
 const {Client} = require('pg');
-const {Todo} = require('../models/todoModel');
 
 const client = new Client({
     connectionString: process.env.DATABASE_URL,
