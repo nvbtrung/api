@@ -1,7 +1,6 @@
 'use strict';
 const https = require('https');
 
-
 exports.exchange = function(req, res){
     let from = req.query.from;
     let to = req.query.to.toUpperCase();

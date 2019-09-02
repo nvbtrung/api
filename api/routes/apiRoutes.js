@@ -10,5 +10,7 @@ module.exports = function(app){
     //Route todo
     app.route('/todo')
         .get(todo.index);
+    app.route('/todo/get')
+        .get(todo.get);
 
 }

@@ -1,6 +1,7 @@
 'use strict';
 const https = require('https');
 const {Client} = require('pg');
+const {Todo} = require('../models/todoModel');
 
 const client = new Client({
     connectionString: process.env.DATABASE_URL,
@@ -17,4 +18,16 @@ exports.index = function(req, res){
         }
         client.end();
     });   
+}
+
+//get
+exports.get = function(req, res){
+    client.query('SELECT * FROM todo', (err, resd) => {
+        if(err) throw err;
+        let todos = [];
+        for(let row of resd.rows){
+            todos.push(new Todo(row[0], row[1], row[2], row[4]));
+        }
+        res.json(todos);
+    })
 }
