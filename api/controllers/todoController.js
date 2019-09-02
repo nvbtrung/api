@@ -26,7 +26,7 @@ exports.get = function(req, res){
         if(err) throw err;
         let todos = [];
         for(let row of resd.rows){
-            todos.push(new Todo(row[0], row[1], row[2], row[4]));
+            todos.push(new Todo(row.id, row.task_name, row.task_content, row.task_iscompleted));
         }
         res.json(todos);
     })
