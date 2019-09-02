@@ -1,5 +1,5 @@
 'use strict';
-import Todo from "../models/todoModel";
+const Todo = require("../models/todoModel");
 const https = require('https');
 const {Client} = require('pg');
 

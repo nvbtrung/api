@@ -1,6 +1,6 @@
 'use strict';
 
-export default class Todo {
+class Todo {
     constructor(id, taskName, taskContent, isCompleted){
         this.id = id;
         this.taskName = taskName;
@@ -8,4 +8,6 @@ export default class Todo {
         this.isCompleted = isCompleted;
     }
 }
+
+module.exports = Todo
 
