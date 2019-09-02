@@ -10,9 +10,9 @@ const client = new Client({
 client.connect();
 
 exports.index = function(req, res){
-    client.query('SELECT * FROM todo', (err, res) => {
+    client.query('SELECT * FROM todo', (err, resd) => {
         if(err) throw err;
-        for(let row of res.row){
+        for(let row of resd.row){
             res.send(JSON.stringify(row));
         }
         client.end();
