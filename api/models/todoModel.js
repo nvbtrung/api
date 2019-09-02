@@ -1,6 +1,6 @@
 'use strict';
 
-class Todo {
+export class Todo {
     constructor(id, taskName, taskContent, isCompleted){
         this.id = id;
         this.taskName = taskName;
