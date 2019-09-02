@@ -12,7 +12,7 @@ client.connect();
 exports.index = function(req, res){
     client.query('SELECT * FROM todo', (err, resd) => {
         if(err) throw err;
-        for(let row of resd.row){
+        for(let row of resd.rows){
             res.send(JSON.stringify(row));
         }
         client.end();
