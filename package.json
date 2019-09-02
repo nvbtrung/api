@@ -15,9 +15,10 @@
   "dependencies": {
     "express": "^4.17.1",
     "git": "^0.1.5",
-    "heroku": "^7.29.0"
+    "heroku": "^7.29.0",
+    "pg": "^7.12.1"
   },
-  "engines":{
-    "node":"10.x"
+  "engines": {
+    "node": "10.x"
   }
 }
