@@ -15,5 +15,5 @@ module.exports = function(app){
     app.route('/todo/delete')
         .post(todo.delete);
     app.route('/todo/create')
-        .post(todo.create);
+        .get(todo.create);
 }
