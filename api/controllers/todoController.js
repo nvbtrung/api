@@ -16,7 +16,6 @@ exports.index = function(req, res){
         for(let row of resd.rows){
             res.send(JSON.stringify(row));
         }
-        client.end();
     });   
 }
 
@@ -28,7 +27,6 @@ exports.get = function(req, res){
         for(let row of resd.rows){
             todos.push(new Todo(row.id, row.task_name, row.task_content, row.task_iscompleted));
         }
-        client.end();
         res.json(todos);        
     })
 }
@@ -37,8 +35,7 @@ exports.delete = function(req, res){
     let id = req.body.id;
 
     client.query('DELETE FROM todo WHERE Id = ' + id + ';', (err, resd) => {
-        if(err) throw err;     
-        client.end();
+        if(err) throw err;   
         res.status(200);   
     });
 }
@@ -55,7 +52,6 @@ exports.create = function(req, res){
             if(err) throw err;
             client.query('SELECT Max(Id) FROM todo;', (err1, res1) => {
                 if(err1) throw err1;
-                client.end();
                 res.send(res1.id);
             });                        
         });
