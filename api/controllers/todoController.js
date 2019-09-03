@@ -32,10 +32,6 @@ exports.get = function(req, res){
     })
 }
 
-exports.delete = function(req, res){
-    let body = '';
-    req.on('data', chunk => {
-        body += chunk.toString();
-    });
-    res.send(body);    
+exports.delete = function(req, res){    
+    res.send(req.body);    
 }
