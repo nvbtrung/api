@@ -33,14 +33,13 @@ exports.get = function(req, res){
 }
 
 exports.delete = function(req, res){
-    // if(req.method === 'POST'){
-    //     let body = '';
-    //     req.on('data', chunk => {
-    //         body += chunk.toString();
-    //     });
-    //     req.on('end', ()=>{
-    //         res.end(body);
-    //     });
-    // }
-    res.send("hello");
+    if(req.method === 'POST'){
+        let body = '';
+        req.on('data', chunk => {
+            body += chunk.toString();
+        });
+        req.on('end', ()=>{
+            res.send(body);
+        });
+    }
 }
