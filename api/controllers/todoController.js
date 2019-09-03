@@ -40,7 +40,7 @@ exports.delete = function(req, res){
         if(err) throw err;     
         client.end();
         res.status(200);   
-    })
+    });
 }
 
 exports.create = function(req, res){    
@@ -55,8 +55,8 @@ exports.create = function(req, res){
             if(err) throw err;
             client.query('SELECT Max(Id) FROM todo', (err1, res1) => {
                 if(err1) throw err1;
+                client.end();
                 res.send(res1.id);
             });                        
         });
-    client.end();
 }
