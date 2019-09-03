@@ -45,9 +45,9 @@ exports.create = function(req, res){
     let taskContent = req.body.taskContent;
     let isCompleted = req.body.isCompleted;
 
-    client.query('INSERT INTO todo(task_name, task_content, task_iscompleted) VALUES('
-        + taskName + ','
-        + taskContent + ','
+    client.query('INSERT INTO todo(task_name, task_content, task_iscompleted) VALUES("'
+        + taskName + '","'
+        + taskContent + '",'
         + isCompleted +');', (err, resd) => {
             if(err) throw err;
             client.query('SELECT Max(Id) FROM todo;', (err1, res1) => {
