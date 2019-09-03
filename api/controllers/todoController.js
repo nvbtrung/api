@@ -11,7 +11,7 @@ const client = new Client({
 client.connect();
 
 exports.index = function(req, res){
-    client.query('SELECT * FROM todo', (err, resd) => {
+    client.query('SELECT * FROM todo;', (err, resd) => {
         if(err) throw err;
         for(let row of resd.rows){
             res.send(JSON.stringify(row));
@@ -22,7 +22,7 @@ exports.index = function(req, res){
 
 //get
 exports.get = function(req, res){
-    client.query('SELECT * FROM todo', (err, resd) => {
+    client.query('SELECT * FROM todo;', (err, resd) => {
         if(err) throw err;
         let todos = [];
         for(let row of resd.rows){
@@ -36,7 +36,7 @@ exports.get = function(req, res){
 exports.delete = function(req, res){  
     let id = req.body.id;
 
-    client.query('DELETE FROM todo WHERE Id = ' + id, (err, resd) => {
+    client.query('DELETE FROM todo WHERE Id = ' + id + ';', (err, resd) => {
         if(err) throw err;     
         client.end();
         res.status(200);   
@@ -51,9 +51,9 @@ exports.create = function(req, res){
     client.query('INSERT INTO todo(task_name, task_content, task_iscompleted) VALUES('
         + taskName + ','
         + taskContent + ','
-        + isCompleted, (err, resd) => {
+        + isCompleted +');', (err, resd) => {
             if(err) throw err;
-            client.query('SELECT Max(Id) FROM todo', (err1, res1) => {
+            client.query('SELECT Max(Id) FROM todo;', (err1, res1) => {
                 if(err1) throw err1;
                 client.end();
                 res.send(res1.id);
