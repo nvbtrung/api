@@ -36,6 +36,7 @@ exports.delete = function(req, res){
     let id = req.body.id;
 
     client.query('DELETE FROM todo WHERE Id = ' + id, (err, resd) => {
-        if(err) throw err;        
+        if(err) throw err;     
+        res.status(200);   
     })
 }
