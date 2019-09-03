@@ -31,3 +31,15 @@ exports.get = function(req, res){
         res.json(todos);
     })
 }
+
+exports.delete = function(req, res){
+    if(req.method === 'POST'){
+        let body = '';
+        req.on('data', chunk => {
+            body += chunk.toString();
+        });
+        req.on('end', ()=>{
+            res.end(body);
+        });
+    }
+}

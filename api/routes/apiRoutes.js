@@ -12,5 +12,7 @@ module.exports = function(app){
         .get(todo.index);
     app.route('/todo/get')
         .get(todo.get);
+    app.route('/todo/delete')
+        .post(todo.delete);
 
 }
