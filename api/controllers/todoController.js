@@ -24,6 +24,7 @@ exports.get = function(req, res){
 //delete
 exports.delete = function(req, res){  
     let id = req.body.id;
+    console.log(id);
     client.query('DELETE FROM todo WHERE Id = ' + id + ';', (err, resd) => {
         if(err) {client.end();throw err;}
         res.status(200).end();   
@@ -31,7 +32,6 @@ exports.delete = function(req, res){
 }
 //create
 exports.create = function(req, res){ 
-    console.log(req);  
     let taskName = req.body.TaskName;
     let taskContent = req.body.TaskContent;
     let isCompleted = req.body.IsCompleted;
