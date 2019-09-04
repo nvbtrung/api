@@ -18,7 +18,7 @@ exports.get = function(req, res){
         for(let row of resd.rows){
             todos.push(new Todo(row.id, row.task_name, row.task_content, row.task_iscompleted));
         }
-        res.json(todos);        
+        res.json(todos).end();        
     })
 }
 //delete
@@ -40,7 +40,7 @@ exports.create = function(req, res){
         + "VALUES('"+ taskName + "','" + taskContent + "'," + isCompleted +");";
     client.query(cmd, (err, resd) => {
         if(err) {client.end();throw err;}
-        res.status(200);      
+        res.status(200).end();      
     });
 }
 //update
