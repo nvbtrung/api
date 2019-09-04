@@ -4,17 +4,17 @@ const {Client} = require('pg');
 
 const client = new Client({
     //Connection string to postgres local
-    // connectionString: "postgres://postgres:postgres@localhost:5432/postgres",
+    connectionString: "postgres://postgres:postgres@localhost:5432/postgres",
     //Connection string heroku postgres
-    connectionString : process.env.DATABASE_URL,
-    ssl:true,
+    // connectionString : process.env.DATABASE_URL,
+    // ssl:true,
 });
 client.connect();
 //get
 exports.get = function(req, res){
     
     client.query('SELECT * FROM todo;', (err, resd) => {
-        if(err) { client.end();throw err;}
+        if(err) throw err;
         let todos = [];
         for(let row of resd.rows){
             todos.push(new Todo(row.id, row.task_name, row.task_content, row.task_iscompleted));
@@ -54,7 +54,7 @@ exports.update = function(req, res){
         + "task_iscompleted = " + isCompleted 
         + " where id = " + id + ";";
     client.query(cmd, (err, resd) => {
-        if(err)  throw err;
+        if(err) throw err;
         res.status(200).end();
     });
 }
