@@ -8,12 +8,12 @@ module.exports = function(app){
         .get(currency.exchange);
     
     //Route todo
-    app.route('/todo')
-        .get(todo.index);
     app.route('/todo/get')
         .get(todo.get);
     app.route('/todo/delete')
         .post(todo.delete);
     app.route('/todo/create')
         .get(todo.create);
+    app.route('/todo/update')
+        .post(todo.update);
 }
