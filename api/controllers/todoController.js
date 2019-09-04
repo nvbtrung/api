@@ -7,12 +7,11 @@ const client = new Client({
     // connectionString: "postgres://postgres:postgres@localhost:5432/postgres",
     //Connection string heroku postgres
     connectionString : process.env.DATABASE_URL,
-    ssl:true,
+    // ssl:true,
 });
 client.connect();
 //get
-exports.get = function(req, res){
-    
+exports.get = function(req, res){    
     client.query('SELECT * FROM todo;', (err, resd) => {
         if(err) throw err;
         let todos = [];
