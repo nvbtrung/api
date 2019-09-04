@@ -30,7 +30,8 @@ exports.delete = function(req, res){
     });
 }
 //create
-exports.create = function(req, res){   
+exports.create = function(req, res){ 
+    console.log(req);  
     let taskName = req.body.TaskName;
     let taskContent = req.body.TaskContent;
     let isCompleted = req.body.IsCompleted;
