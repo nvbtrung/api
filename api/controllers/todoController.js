@@ -38,7 +38,7 @@ exports.create = function(req, res){
     let cmd = "INSERT INTO todo(task_name, task_content, task_iscompleted) "
         + "VALUES('"+ taskName + "','" + taskContent + "'," + isCompleted +");";
     client.query(cmd, (err, resd) => {
-        if(err)throw err;
+        if(err) throw err;
         res.status(200);      
     });
 }
