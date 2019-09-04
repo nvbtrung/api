@@ -35,6 +35,7 @@ exports.create = function(req, res){
     let taskName = req.body.taskName;
     let taskContent = req.body.taskContent;
     let isCompleted = req.body.isCompleted;
+    console.log(taskName + " , " + taskContent + "," + isCompleted);
     let cmd = "INSERT INTO todo(task_name, task_content, task_iscompleted) "
         + "VALUES('"+ taskName + "','" + taskContent + "'," + isCompleted +");";
     client.query(cmd, (err, resd) => {
