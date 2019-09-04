@@ -6,7 +6,7 @@ const client = new Client({
     //Connection string to postgres local
     // connectionString: "postgres://postgres:postgres@localhost:5432/postgres",
     //Connection string heroku postgres
-    connectionString : "process.env.DATABASE_URL",
+    connectionString : process.env.DATABASE_URL,
     ssl:true,
 });
 
