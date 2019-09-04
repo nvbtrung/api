@@ -13,7 +13,7 @@ module.exports = function(app){
     app.route('/todo/delete')
         .post(todo.delete);
     app.route('/todo/create')
-        .get(todo.create);
+        .post(todo.create);
     app.route('/todo/update')
         .post(todo.update);
 }

@@ -39,10 +39,7 @@ exports.create = function(req, res){
         + "VALUES('"+ taskName + "','" + taskContent + "'," + isCompleted +");";
     client.query(cmd, (err, resd) => {
         if(err)throw err;
-        client.query('SELECT Max(Id) FROM todo;', (err1, res1) => {
-            if(err1) throw err1;
-            res.json(res1.rows[0].max);
-        });                        
+        res.status(200);      
     });
 }
 //update
