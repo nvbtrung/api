@@ -24,7 +24,6 @@ exports.get = function(req, res){
 //delete
 exports.delete = function(req, res){  
     let id = req.body.id;
-    console.log(id);
     client.query('DELETE FROM todo WHERE Id = ' + id + ';', (err, resd) => {
         if(err) {client.end();throw err;}
         res.status(200).end();   
@@ -35,7 +34,6 @@ exports.create = function(req, res){
     let taskName = req.body.TaskName;
     let taskContent = req.body.TaskContent;
     let isCompleted = req.body.IsCompleted;
-    console.log(taskName + " , " + taskContent + "," + isCompleted);
     let cmd = "INSERT INTO todo(task_name, task_content, task_iscompleted) "
         + "VALUES('"+ taskName + "','" + taskContent + "'," + isCompleted +");";
     client.query(cmd, (err, resd) => {
@@ -45,10 +43,10 @@ exports.create = function(req, res){
 }
 //update
 exports.update = function(req, res){
-    let id = req.body.id;
-    let taskName = req.body.taskName;
-    let taskContent = req.body.taskContent;
-    let isCompleted = req.body.isCompleted;
+    let id = req.body.Id;
+    let taskName = req.body.TaskName;
+    let taskContent = req.body.TaskContent;
+    let isCompleted = req.body.IsCompleted;
     let cmd = "UPDATE todo " 
         + "SET task_name = '" + taskName + "',"
         + "task_content = '" + taskContent + "',"
